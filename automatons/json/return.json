@@ -1,0 +1,81 @@
+{
+  "name" : "<return>",
+  "q0" :
+  {
+    "initial" : true,
+    "final"   : false,
+    "productions" :
+    {
+        "r" : "q1"
+    }
+  },
+  "q1" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "e" : "q2"
+    }
+  },
+  "q2" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "t" : "q3"
+    }
+  },
+  "q3" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "u" : "q4"
+    }
+  },
+  "q4" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "r" : "q5"
+    }
+  },
+  "q5" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "n" : "q6"
+    }
+  },
+  "q6" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        "<id>" : "q7"
+    }
+  },
+  "q7" :
+  {
+    "initial" : false,
+    "final"   : false,
+    "productions" :
+    {
+        ";" : "q8"
+    }
+  },
+  "q8" :
+  {
+    "initial" : false,
+    "final"   : true,
+    "productions" : {}
+  }
+}

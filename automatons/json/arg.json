@@ -1,0 +1,22 @@
+{
+  "name" : "<arg>",
+  "q0" :
+  {
+    "initial" : true,
+    "final"   : false,
+    "productions" :
+    {
+        "<letter>" : "q1"
+    }
+  },
+  "q1" :
+  {
+    "initial" : false,
+    "final"   : true,
+    "productions" :
+    {
+        "<letter>" : "q1",
+        "<num>"    : "q1"
+    }
+  }
+}
