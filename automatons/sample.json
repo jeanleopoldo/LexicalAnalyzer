@@ -1,0 +1,12 @@
+{
+  "name" : "sample",
+  "q0" :
+  {
+    "initial" : true,
+    "final"   : false,
+    "productions" :
+    {
+        "v" : "q1"
+    }
+  }
+}
