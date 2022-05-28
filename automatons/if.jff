@@ -3,78 +3,48 @@
 	<automaton>
 		<!--The list of states.-->
 		<state id="0" name="q0">
-			<x>401.0</x>
-			<y>364.0</y>
+			<x>214.0</x>
+			<y>300.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
-			<x>493.0</x>
-			<y>364.0</y>
+			<x>306.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="2" name="q2">
-			<x>592.0</x>
-			<y>364.0</y>
+			<x>405.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="3" name="q3">
-			<x>706.0</x>
-			<y>364.0</y>
+			<x>519.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="4" name="q4">
-			<x>826.0</x>
-			<y>364.0</y>
+			<x>639.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="5" name="q5">
-			<x>946.0</x>
-			<y>364.0</y>
+			<x>759.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="6" name="q6">
-			<x>1072.0</x>
-			<y>364.0</y>
+			<x>885.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="7" name="q7">
-			<x>1212.0</x>
-			<y>364.0</y>
+			<x>1025.0</x>
+			<y>300.0</y>
 		</state>
 		<state id="8" name="q8">
-			<x>1337.0</x>
-			<y>364.0</y>
-			<final/>
-		</state>
-		<state id="9" name="q9">
-			<x>1425.0</x>
-			<y>292.0</y>
-			<final/>
-		</state>
-		<state id="10" name="q10">
-			<x>1425.0</x>
-			<y>445.0</y>
+			<x>1150.0</x>
+			<y>300.0</y>
 			<final/>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
-			<from>3</from>
-			<to>4</to>
-			<read>&lt;expr&gt;</read>
-		</transition>
-		<transition>
-			<from>5</from>
-			<to>6</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>1</to>
-			<read>i</read>
-		</transition>
-		<transition>
-			<from>2</from>
-			<to>3</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>7</from>
-			<to>8</to>
-			<read>}</read>
+			<from>1</from>
+			<to>2</to>
+			<read>f</read>
 		</transition>
 		<transition>
 			<from>6</from>
@@ -82,14 +52,14 @@
 			<read>&lt;cmd&gt;</read>
 		</transition>
 		<transition>
-			<from>8</from>
-			<to>9</to>
-			<read>&lt;else&gt;</read>
+			<from>3</from>
+			<to>4</to>
+			<read>&lt;expr&gt;</read>
 		</transition>
 		<transition>
-			<from>1</from>
-			<to>2</to>
-			<read>f</read>
+			<from>0</from>
+			<to>1</to>
+			<read>i</read>
 		</transition>
 		<transition>
 			<from>4</from>
@@ -97,14 +67,29 @@
 			<read>)</read>
 		</transition>
 		<transition>
+			<from>5</from>
+			<to>6</to>
+			<read>{</read>
+		</transition>
+		<transition>
 			<from>8</from>
-			<to>10</to>
+			<to>8</to>
 			<read>&lt;elif&gt;</read>
 		</transition>
 		<transition>
-			<from>10</from>
-			<to>9</to>
+			<from>8</from>
+			<to>8</to>
 			<read>&lt;else&gt;</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>8</to>
+			<read>}</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>(</read>
 		</transition>
 	</automaton>
 </structure>
