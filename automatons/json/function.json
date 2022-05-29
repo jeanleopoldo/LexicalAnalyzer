@@ -1,5 +1,5 @@
 {
-  "name" : "<function>",
+  "name" : "function",
   "states" :
   {
     "q0":
@@ -80,7 +80,8 @@
       "final"       : false,
       "productions" :
       {
-          "(" : "q9"
+          "<letter>" : "q8",
+          "("        : "q9"
       }
     },
     "q9":
@@ -89,8 +90,9 @@
       "final"       : false,
       "productions" :
       {
-          "<letter>" : "q9",
-          ")"        : "q10"
+          "<arg>," : "q9",
+          "<arg>"  : "q10",
+          ")"      : "q11"
       }
     },
     "q10":
@@ -99,8 +101,7 @@
       "final"       : false,
       "productions" :
       {
-          "<arg>," : "q10",
-          "<arg>"  : "q11"
+          ")"        : "q11"
       }
     },
     "q11":
@@ -109,7 +110,7 @@
       "final"       : false,
       "productions" :
       {
-          ")" : "q12"
+          "{" : "q12"
       }
     },
     "q12":
@@ -118,33 +119,24 @@
       "final"       : false,
       "productions" :
       {
-          "{" : "q13"
+          "<cmd>"    : "q12",
+          "}"        : "q13",
+          "<return>" : "q14"
       }
     },
     "q13":
     {
       "initial"     : false,
-      "final"       : false,
-      "productions" :
-      {
-          "<cmd>"   : "q13",
-          "}"       : "q14",
-          "<return>" : "q15"
-      }
+      "final"       : true,
+      "productions" : {}
     },
     "q14":
     {
       "initial"     : false,
-      "final"       : true,
-      "productions" : {}
-    },
-    "q15":
-    {
-      "initial"     : false,
       "final"       : false,
       "productions" :
       {
-        "}" : "q14"
+          "}"       : "q13"
       }
     }
   }
