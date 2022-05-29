@@ -1,0 +1,5 @@
+function main()
+{
+    var a = 2 + 1;
+    return a;
+}
