@@ -90,9 +90,8 @@
       "final"       : false,
       "productions" :
       {
-          "<arg>," : "q9",
           "<arg>"  : "q10",
-          ")"      : "q11"
+          ")"      : "q12"
       }
     },
     "q10":
@@ -101,7 +100,8 @@
       "final"       : false,
       "productions" :
       {
-          ")"        : "q11"
+          ")"        : "q12",
+          ","        : "q11"
       }
     },
     "q11":
@@ -110,7 +110,7 @@
       "final"       : false,
       "productions" :
       {
-          "{" : "q12"
+          "<arg>" : "q10"
       }
     },
     "q12":
@@ -119,16 +119,17 @@
       "final"       : false,
       "productions" :
       {
-          "<cmd>"    : "q12",
-          "}"        : "q13",
-          "<return>" : "q14"
+          "{"    : "q13"
       }
     },
     "q13":
     {
       "initial"     : false,
-      "final"       : true,
-      "productions" : {}
+      "final"       : false,
+      "productions" :
+      {
+        "<cmd>" : "q14"
+      }
     },
     "q14":
     {
@@ -136,7 +137,24 @@
       "final"       : false,
       "productions" :
       {
-          "}"       : "q13"
+          "<cmd>"    : "q14",
+          "}"        : "q15",
+          "<return>" : "q16"
+      }
+    },
+    "q15":
+    {
+      "initial"     : false,
+      "final"       : true,
+      "productions" : {}
+    },
+    "q16":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "}" : "q15"
       }
     }
   }

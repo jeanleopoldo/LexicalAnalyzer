@@ -1,45 +1,63 @@
-from ..model.exceptions.ProductionNotFoundException import ProductionNotFoundException
+from .LexicalAnalyzerState import LexicalAnalyzerState
 
 class LexicalAnalyzer:
     def __init__(self, input, lexemes):
-        self._input   = input
-        self._lexemes = lexemes
+        self._input         = input
+        self._lexemes       = lexemes
+        self._found_lexemes = list()
 
     def analyze(self):
-        found_lexemes  = list()
-        char           = self._input[0]
-        start_lexeme   = self._lexemes["function"]
-        found_lexemes.append(start_lexeme)
-        initial_state  = start_lexeme.initial_state()
-        next_state     = initial_state.next_state(char)
-        current_state  = start_lexeme.get_state(next_state)
-        current_lexeme = start_lexeme
         
-        index = 1
-        previous_lexeme = None
-        for index in range(len(self._input)-1):
-            try:
-                index        += 1
-                char          = self._input[index]
-                current_state = current_lexeme.get_state(next_state)
+        queue          = list()
+        current_lexeme = self._lexemes["function"]
+        self._found_lexemes.append(current_lexeme)
+        current_state  = current_lexeme.initial_state()
+        
+        for index in range(len(self._input)):
+            char = self._input[index]
+            if current_state.has_production_with_char(char):
                 next_state    = current_state.next_state(char)
-            except ProductionNotFoundException:
+                current_state = current_lexeme.get_state(next_state)
+            else:
 
-                if current_state.is_final():
-                    next_state      = previous_state.next_state(char)
-                    current_lexeme  = previous_lexeme 
+                if not current_state.is_final():
+                    lexical_state    = LexicalAnalyzerState(current_lexeme, current_state)
+                    queue.append(lexical_state)
+                    possible_lexemes = current_state.get_productions_that_leads_to_another_lexeme()
+                    bfs              = list(possible_lexemes)
+                    current_lexeme   = self.find_next_lexeme(char, bfs)
+                    current_state    = current_lexeme.initial_state()
+                    next_state       = current_state.next_state(char)
+                    current_state    = current_lexeme.get_state(next_state)
                 else:
-                    previous_lexeme = current_lexeme
-                    previous_state  = current_state
-                    current_lexeme  = self.find_next_lexeme(current_state, char)
-                    found_lexemes.append(current_lexeme)
-                    next_state      = current_lexeme.initial_state()
-                    next_state      = next_state.next_state(char)
-                  
-                
+                    this_state       = queue.pop()
+                    current_lexeme   = this_state.lexeme()
+                    current_state    = this_state.state()
+                    next_state       = current_state.next_state(char)
+                    current_state    = current_lexeme.get_state(next_state)
     
-    def find_next_lexeme(self, state, char):
-        raise Exception("not implemented yet")
+    def find_next_lexeme(self, char, bfs):
+        if len(bfs) == 0:
+            raise RuntimeError("there are some errors in this language.")
+        possible_lexeme = bfs.pop(0)
+        possible_lexeme = possible_lexeme[1 : : ]
+        possible_lexeme = possible_lexeme[ : -1 : ]
+        lexeme          = self._lexemes[possible_lexeme]
+        if lexeme.initial_state().has_production_with_char(char):
+            bfs.append(lexeme)
+            self._found_lexemes.append(lexeme)
+            return lexeme
+        
+        possible_lexeme = self._lexemes[possible_lexeme]
+        lexemes = possible_lexeme.initial_state().get_productions_that_leads_to_another_lexeme()
+        for lexeme in lexemes:
+            possible_lexeme.generated_by(possible_lexeme)
+            bfs.append(lexeme)
+        
+        return self.find_next_lexeme(char, bfs)
+           
+
+
                 
                 
     

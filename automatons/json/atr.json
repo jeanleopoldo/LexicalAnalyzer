@@ -11,15 +11,6 @@
         "<var>" : "q1"
       }
     },
-    "q1":
-    {
-      "initial" : false,
-      "final" : false,
-      "productions" :
-      {
-        "esp" : "q2"
-      }
-    },
     "q2":
     {
       "initial" : false,

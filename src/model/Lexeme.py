@@ -14,6 +14,9 @@ class Lexeme:
         
         print("")
     
+    def generated_by(self, lexeme):
+        self._generated_by = lexeme
+    
     def name(self):
         return self._json["name"]
     
@@ -25,6 +28,4 @@ class Lexeme:
     
     def initial_state(self):
         return self._states["q0"]
-
-
-
+    
