@@ -27,7 +27,7 @@ class LexicalAnalyzer:
         print("")
     
     def find_token(self, word):
-        if word == " ":
+        if word == " " or word =="":
             return
         found = False
         for token in self._tokens:
@@ -36,5 +36,10 @@ class LexicalAnalyzer:
                 found = True
                 self._found_tokens[token].append(word)
         
-        if not found:
-            self._found_tokens["id"] = word
+        if not found and word[0] is not type(word[0])!=int and word[0] is not type(word[0])!=float: # prevents id starting with numbers: var 3id = ""
+            self._found_tokens["id"].append(word)
+        
+        # TODO
+        # 1. + is being set as id instead of op
+        # 2 num is is being set as id instead of literal
+        # 3 needs to find string as literal
