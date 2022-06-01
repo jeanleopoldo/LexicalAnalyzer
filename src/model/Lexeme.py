@@ -37,3 +37,5 @@ class Lexeme:
     def initial_state(self):
         return self._states["q0"]
     
+
+    

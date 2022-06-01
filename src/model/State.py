@@ -12,9 +12,14 @@ class State:
     def productions(self):
         return self._json["productions"]
     
-    def next_state(self, char):
+    def next_state_by_char(self, char):
         try:
             return self._json["productions"][char]
+        except KeyError:
+            raise ProductionNotFoundException
+    def next_state_by_lexeme(self, lexeme):
+        try:
+            return self._json["productions"][lexeme]
         except KeyError:
             raise ProductionNotFoundException
     
