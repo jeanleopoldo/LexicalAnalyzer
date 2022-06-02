@@ -1,0 +1,18 @@
+{
+  "name" : "cmd",
+  "states" :
+  {
+    "q0":
+    {
+      "initial" : true,
+      "final" : true,
+      "productions" :
+      {
+          "<atr>"   : "q0",
+          "<if>"    : "q0",
+          "<for>"   : "q0",
+          "<while>" : "q0"
+      }
+    }
+  }
+}

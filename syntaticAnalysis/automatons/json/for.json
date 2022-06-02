@@ -1,0 +1,130 @@
+{
+  "name" : "for",
+  "states" :
+  {
+    "q0":
+    {
+      "initial"     : true,
+      "final"       : false,
+      "productions" :
+      {
+        "f" : "q1"
+      }
+    },
+    "q1":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "o" : "q2"
+      }
+    },
+    "q2":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "r" : "q3"
+      }
+    },
+    "q3":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "(" : "q4"
+      }
+    },
+    "q4":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "<num>" : "q5"
+      }
+    },
+    "q5":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        " " : "q6"
+      }
+    },
+    "q6":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "i" : "q7"
+      }
+    },
+    "q7":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "n" : "q8"
+      }
+    },
+    "q8":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        " " : "q9"
+      }
+    },
+    "q9":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "<num>" : "q10"
+      }
+    },
+    "q10":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        ")" : "q11"
+      }
+    },
+    "q11":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "{" : "q12"
+      }
+    },
+    "q12":
+    {
+      "initial"     : false,
+      "final"       : false,
+      "productions" :
+      {
+        "<cmd>" : "q12",
+        "}"     : "q13"
+      }
+    },
+    "q13":
+    {
+      "initial"     : false,
+      "final"       : true,
+      "productions" : {}
+    }
+  }
+}
