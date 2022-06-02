@@ -38,20 +38,14 @@ class TokensInputHandler(InputHandler):
         return tokens
 
     def get_tokens_automatons(self):
+        tokens     = {}
         automatons = self.read_list(self._available_automatons)
-        tokens = {}
+        
         
         for index in range(len(automatons)):
-            path = self._tokens_automatons_path+automatons[index]+".json"
-            str = self.read_file(path),
-            token_json = json.loads(str[0])
-            token = Token(token_json)
+            path                       = self._tokens_automatons_path+automatons[index]+".json"
+            str                        = self.read_file(path),
+            token_json                 = json.loads(str[0])
+            token                      = Token(token_json)
             tokens[token_json["name"]] = token
-        
-        # TODO create cmm automato
         return tokens
-
-
-
-    
-    
