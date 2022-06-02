@@ -10,8 +10,8 @@ _dirname = os.path.dirname(__file__)+"/"
 
 if __name__ == "__main__":
     
-    available_automatons  = _dirname+"automatons/lexemes.txt"
-    automatons_path       = _dirname+"automatons/json/"
+    available_automatons  = _dirname+"syntaticAnalysis/automatons/lexemes.txt"
+    automatons_path       = _dirname+"syntaticAnalysis/automatons/json/"
     input_path            = _dirname+"expr/input.txt"
     tokens_path           = _dirname+"tokens/"
     
