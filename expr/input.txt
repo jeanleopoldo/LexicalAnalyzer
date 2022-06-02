@@ -1,5 +1,7 @@
 function main()
 {
-    var a = 2 + 1;
+    var a = 2 + 1.1;
+    var t = "uaehuahe";
+    # this is a comment\
     return a;
 }
