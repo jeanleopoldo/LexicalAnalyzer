@@ -12,9 +12,8 @@ class LexemesInputHandler(InputHandler):
         available = self.read_list(self._available_automatons)
         lexemes   = {}
         for index in range(len(available)):
-            str = self.read_file(self._path + available[index]+".json")
-            lexeme_json = json.loads(str)
-            lexeme = Lexeme(lexeme_json)
-            
+            str                          = self.read_file(self._path + available[index]+".json")
+            lexeme_json                  = json.loads(str)
+            lexeme                       = Lexeme(lexeme_json)            
             lexemes[lexeme_json["name"]] = lexeme 
         return lexemes

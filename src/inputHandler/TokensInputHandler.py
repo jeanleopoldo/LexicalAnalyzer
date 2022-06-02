@@ -1,14 +1,17 @@
-from ast import operator
+import json
 from .InputHandler import InputHandler
+from ..model.Token import Token
 class TokensInputHandler(InputHandler):
-    def __init__(self, tokens_path):
+    def __init__(self, tokens_path, available_automatons, tokens_automatons_path):
         super().__init__(tokens_path)
-        self._identifiers = self._path + "identifiers.txt"
-        self._keywords    = self._path + "keywords.txt"
-        self._delimiters  = self._path + "delimiters.txt"
-        self._operators   = self._path + "operators.txt"
-        self._comments    = self._path + "comments.txt"
-        self._literals    = self._path + "literals.txt"
+        self._identifiers            = self._path + "identifiers.txt"
+        self._keywords               = self._path + "keywords.txt"
+        self._delimiters             = self._path + "delimiters.txt"
+        self._operators              = self._path + "operators.txt"
+        self._comments               = self._path + "comments.txt"
+        self._literals               = self._path + "literals.txt"
+        self._available_automatons   = available_automatons
+        self._tokens_automatons_path = tokens_automatons_path
 
     def get_tokens(self):
 
@@ -32,6 +35,20 @@ class TokensInputHandler(InputHandler):
         literals      = self.read_list(self._literals)
         tokens["lit"] = literals
 
+        return tokens
+
+    def get_tokens_automatons(self):
+        automatons = self.read_list(self._available_automatons)
+        tokens = {}
+        
+        for index in range(len(automatons)):
+            path = self._tokens_automatons_path+automatons[index]+".json"
+            str = self.read_file(path),
+            token_json = json.loads(str[0])
+            token = Token(token_json)
+            tokens[token_json["name"]] = token
+        
+        # TODO create cmm automato
         return tokens
 
 
