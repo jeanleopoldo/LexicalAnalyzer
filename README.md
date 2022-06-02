@@ -1,8 +1,8 @@
 # LexicalAnalyzer
-This is an implementation of a lexical analyzer in C++
+This is an implementation of a lexical analyzer in Python
 
-## Requisites
-[g++ 11](https://gcc.gnu.org/projects/cxx-status.html#cxx11)
+## Requirements
+[python 3.9.12](https://www.python.org/downloads/release/python-3912/)
 
 ## How to run
 - one shall insert a regular grammar in ./expr/file.txt
@@ -17,4 +17,4 @@ This is an implementation of a lexical analyzer in C++
 This project adheres [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Further informations
-The generated automatons are in ./automatons along with its representation as input for the program, which is represented in json.
+The generated automatons are in ./generated_automatons along with its representation as input for the program, which is represented in json.
