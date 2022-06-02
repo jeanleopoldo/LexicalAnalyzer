@@ -1,0 +1,47 @@
+{
+  "name" : "elif",
+  "states" : {
+    "q0" :
+    {
+      "initial" : true,
+      "final"   : false,
+      "productions" :
+      {
+        "e" : "q1"
+      }
+    },
+    "q1" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "l" : "q2"
+      }
+    },
+    "q2" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "i" : "q3"
+      }
+    },
+    "q3" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "f" : "q4"
+      }
+    },
+    "q4" :
+    {
+      "initial" : false,
+      "final"   : true,
+      "productions" : {}
+    }
+  }
+}

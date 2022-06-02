@@ -1,0 +1,74 @@
+{
+  "name" : "finally",
+  "states" : {
+    "q0" :
+    {
+      "initial" : true,
+      "final"   : false,
+      "productions" :
+      {
+        "f" : "q1"
+      }
+    },
+    "q1" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "i" : "q2"
+      }
+    },
+    "q2" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "n" : "q3"
+      }
+    },
+    "q3" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "a" : "q4"
+      }
+    },
+    "q4" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "l" : "q5"
+      }
+    },
+    "q5" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "l" : "q6"
+      }
+    },
+    "q6" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "y" : "q7"
+      }
+    },
+    "q7" :
+    {
+      "initial" : false,
+      "final"   : true,
+      "productions" : {}
+    }
+  }
+}

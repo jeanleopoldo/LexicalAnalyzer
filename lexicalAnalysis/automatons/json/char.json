@@ -1,0 +1,47 @@
+{
+  "name" : "char",
+  "states" : {
+    "q0" :
+    {
+      "initial" : true,
+      "final"   : false,
+      "productions" :
+      {
+        "c" : "q1"
+      }
+    },
+    "q1" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "h" : "q2"
+      }
+    },
+    "q2" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "a" : "q3"
+      }
+    },
+    "q3" :
+    {
+      "initial" : false,
+      "final"   : false,
+      "productions" :
+      {
+        "r" : "q4"
+      }
+    },
+    "q4" :
+    {
+      "initial" : false,
+      "final"   : true,
+      "productions" : {}
+    }
+  }
+}
