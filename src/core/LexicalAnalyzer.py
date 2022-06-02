@@ -1,45 +1,68 @@
 DEL = "del"
 OP  = "op"
+LIT = "lit"
+ID  = "id"
+CMM = "cmm"
 
 
 class LexicalAnalyzer:
     def __init__(self, input, tokens):
-        self._input         = input
-        self._tokens        = tokens
+        self._input          = input
+        self._tokens         = tokens
+        self._ordered_tokens = list()
 
 
     def tokenize(self):
         self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[]}
         word = ""
+        cmm = False
         for index in range(len(self._input)):
             char = self._input[index]
-
-            if char in self._tokens[DEL] or char in self._tokens[DEL]:
-                self.find_token(word)
-                word = ""
+            if char == ";":
+                print()
+            ## dealing with comments
+            if cmm:
+                if char == '\\':
+                    cmm = False
+                    self._ordered_tokens.append({CMM : word})
+                    word = ""
+                else:
+                    word += char
+                continue
             
-            if char == " ":
-                self.find_token(word)
+            if char in self._tokens[CMM]:
+                
+                cmm = True
+                word += char
+                continue
+
+            if char in self._tokens[DEL] or char in self._tokens[OP] or char == " ":
+                token = self.find_token(word)
+                if token is not None:
+                    self._ordered_tokens.append({token : word})
+                token = self.find_token(char)
+                if token is not None:
+                    self._ordered_tokens.append({token : char})
                 word = ""
             else:
                 word +=char
-        
-        print("")
-    
+            
     def find_token(self, word):
         if word == " " or word =="":
             return
-        found = False
+        
+        #dealing with strings
+        if word[0] == '"' and word[len(word)-1] == '"':
+            return LIT
+
+        # dealing with operators, delimites and keywords
         for token in self._tokens:
             array = self._tokens[token]
             if word in array:
-                found = True
                 self._found_tokens[token].append(word)
+                return token
         
-        if not found and word[0] is not type(word[0])!=int and word[0] is not type(word[0])!=float: # prevents id starting with numbers: var 3id = ""
-            self._found_tokens["id"].append(word)
-        
-        # TODO
-        # 1. + is being set as id instead of op
-        # 2 num is is being set as id instead of literal
-        # 3 needs to find string as literal
+        #dealing with identifiers
+        if word[0] is not type(word[0]) != int and word[0] is not type(word[0]) != float: # prevents id starting with numbers: var 3id = ""
+            self._found_tokens[ID].append(word)
+            return ID
