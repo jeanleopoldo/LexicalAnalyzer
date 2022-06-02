@@ -18,8 +18,6 @@ class LexicalAnalyzer:
         cmm = False
         for index in range(len(self._input)):
             char = self._input[index]
-            if char == ";":
-                print()
             ## dealing with comments
             if cmm:
                 if char == '\\':
