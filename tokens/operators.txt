@@ -8,3 +8,7 @@ and
 or
 xor
 not
++
+-
+*
+/
