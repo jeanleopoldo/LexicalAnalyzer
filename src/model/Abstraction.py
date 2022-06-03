@@ -23,6 +23,7 @@ class Abstraction:
 
     def get_current_state(self):
         return self._current_state
+
     def states(self):
         return self._states
     
@@ -31,3 +32,5 @@ class Abstraction:
     
     def initial_state(self):
         return self._states["q0"]
+    
+    
