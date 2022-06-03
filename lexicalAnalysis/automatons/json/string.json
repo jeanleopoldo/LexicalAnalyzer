@@ -79,13 +79,13 @@
         "8" : "q1",
         "9" : "q1",
         "'" : "q2"
-      },
-      "q2" :
-      {
-        "initial" : false,
-        "final"   : true,
-        "productions" : { }
       }
+    },
+    "q2" :
+    {
+      "initial" : false,
+      "final"   : true,
+      "productions" : { }
     }
   }
 }

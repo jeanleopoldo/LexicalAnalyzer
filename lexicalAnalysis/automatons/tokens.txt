@@ -1,4 +1,6 @@
+string
 id
+num
 if
 else
 elif
@@ -18,11 +20,15 @@ break
 <=
 ==
 !=
++
+-
+div
+*
+**
 and
 or
 xor
 not
-string
 true
 false
 float

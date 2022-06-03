@@ -1,14 +1,13 @@
 {
-  "name" : "[",
-  "states" :
-  {
+  "name" : "+",
+  "states" : {
     "q0" :
     {
       "initial" : true,
       "final"   : false,
       "productions" :
       {
-        "[" : "q1"
+        "+" : "q1"
       }
     },
     "q1" :
