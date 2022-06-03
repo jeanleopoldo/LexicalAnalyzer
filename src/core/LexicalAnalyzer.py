@@ -1,3 +1,5 @@
+import copy
+
 DEL = "del"
 OP  = "op"
 LIT = "lit"
@@ -6,14 +8,64 @@ CMM = "cmm"
 
 
 class LexicalAnalyzer:
-    def __init__(self, input, tokens):
+    def __init__(self, input, tokens, tokens_automatons):
         self._input          = input
         self._tokens         = tokens
         self._ordered_tokens = list()
+        self._tokens_automatons = tokens_automatons
+        self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[]}
 
 
     def tokenize(self):
-        self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[]}
+        self.find_tokens()
+        self.generate_automaton()
+    
+    def generate_automaton(self):
+
+        token_index   = 0
+        token_name    = self._ordered_tokens[token_index]
+        current_token = self.retrieve_token(token_name)
+        current_state = current_token.initial_state()
+        states        = list()
+
+
+        formatted_input = self._input
+        formatted_input = formatted_input.replace(" ", "")
+
+        for index in range(len(formatted_input)):
+            char          = formatted_input[index]
+            states.append(current_state)
+
+            if current_state.is_final() and not current_state.has_production_with_char(char):
+                token_index += 1
+                next_token_name = self._ordered_tokens[token_index]
+                next_token      = self.retrieve_token(next_token_name)
+                next_state      = next_token.initial_state()
+                current_state.update_final_state(char, next_state.name())
+                next_state.update_initial_state()
+                current_token = next_token
+                current_state = next_state
+            
+            next_state_name = current_state.next_state_by_char(char)
+            current_state   = current_token.get_state(next_state_name)
+            
+
+    def retrieve_token(self, name):
+        if name[0] == ID or name[0] == CMM or name[0] == LIT:
+            try:
+                if "." in name[1]:
+                    float(name[1])
+                else:
+                    int(name[1])
+                token_name = "num"
+            except:
+                token_name = name[0]
+        else:
+            token_name = name[1]
+        token = self._tokens_automatons[token_name]
+        return copy.deepcopy(token)
+
+    def find_tokens(self):
         word = ""
         cmm = False
         for index in range(len(self._input)):
@@ -22,14 +74,13 @@ class LexicalAnalyzer:
             if cmm:
                 if char == '\\':
                     cmm = False
-                    self._ordered_tokens.append({CMM : word})
+                    self._ordered_tokens.append([CMM, word])
                     word = ""
                 else:
                     word += char
                 continue
             
             if char in self._tokens[CMM]:
-                
                 cmm = True
                 word += char
                 continue
@@ -37,10 +88,10 @@ class LexicalAnalyzer:
             if char in self._tokens[DEL] or char in self._tokens[OP] or char == " ":
                 token = self.find_token(word)
                 if token is not None:
-                    self._ordered_tokens.append({token : word})
+                    self._ordered_tokens.append([token,word])
                 token = self.find_token(char)
                 if token is not None:
-                    self._ordered_tokens.append({token : char})
+                    self._ordered_tokens.append([token,char])
                 word = ""
             else:
                 word +=char
@@ -64,3 +115,5 @@ class LexicalAnalyzer:
         if word[0] is not type(word[0]) != int and word[0] is not type(word[0]) != float: # prevents id starting with numbers: var 3id = ""
             self._found_tokens[ID].append(word)
             return ID
+
+    
