@@ -5,6 +5,8 @@ OP  = "op"
 LIT = "lit"
 ID  = "id"
 CMM = "cmm"
+NUM = "num"
+STRING = "string"
 
 
 class LexicalAnalyzer:
@@ -13,7 +15,7 @@ class LexicalAnalyzer:
         self._tokens         = tokens
         self._ordered_tokens = list()
         self._tokens_automatons = tokens_automatons
-        self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[]}
+        self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[], "num":[]}
 
 
     def tokenize(self):
@@ -30,10 +32,13 @@ class LexicalAnalyzer:
 
 
         formatted_input = self._input
+
         formatted_input = formatted_input.replace(" ", "")
 
         for index in range(len(formatted_input)):
             char          = formatted_input[index]
+            if char == '"':
+                char = "'"
             states.append(current_state)
 
             if current_state.is_final() and not current_state.has_production_with_char(char):
@@ -51,15 +56,25 @@ class LexicalAnalyzer:
             
 
     def retrieve_token(self, name):
-        if name[0] == ID or name[0] == CMM or name[0] == LIT:
+        if name[0] == ID or name[0] == CMM:
+            token_name = name[0]
+        elif name[0] == LIT:
+            if name[1][0] == '"' and name[1][len(name[1])-1] == '"':
+                token_name = STRING
+            else:
+                token_name = LIT
+        elif name[0] == NUM:
             try:
                 if "." in name[1]:
                     float(name[1])
                 else:
                     int(name[1])
-                token_name = "num"
+                token_name = NUM
             except:
-                token_name = name[0]
+                if name[0][0] == '"':
+                    token_name = STRING
+                else:
+                    token_name = name[1]
         else:
             token_name = name[1]
         token = self._tokens_automatons[token_name]
@@ -69,6 +84,8 @@ class LexicalAnalyzer:
         word = ""
         cmm = False
         for index in range(len(self._input)):
+            if index == 10:
+                print()
             char = self._input[index]
             ## dealing with comments
             if cmm:
@@ -112,8 +129,10 @@ class LexicalAnalyzer:
                 return token
         
         #dealing with identifiers
-        if word[0] is not type(word[0]) != int and word[0] is not type(word[0]) != float: # prevents id starting with numbers: var 3id = ""
+
+        try:
+            int(word[0])
+            return NUM
+        except:
             self._found_tokens[ID].append(word)
             return ID
-
-    

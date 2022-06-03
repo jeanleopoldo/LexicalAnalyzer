@@ -27,5 +27,5 @@ if __name__ == "__main__":
     tokens                = tokens_input_handler.get_tokens()
     tokens_automatons     = tokens_input_handler.get_tokens_automatons()
 
-    analyzer              = LexicalAnalyzer(input, tokens)
+    analyzer              = LexicalAnalyzer(input, tokens, tokens_automatons)
     analyzer.tokenize()

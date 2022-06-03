@@ -2,6 +2,7 @@ from .State import State
 
 class Abstraction:
     def __init__(self, json):
+        self._name = json["name"]
         self._json          = json
         self._generated_by  = None
         self._states        = {}
@@ -16,7 +17,7 @@ class Abstraction:
             self._states[name] = state
     
     def name(self):
-        return self._json["name"]
+        return self._name
 
     def set_current_state(self, state):
         self._current_state = state

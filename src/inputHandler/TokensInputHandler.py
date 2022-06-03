@@ -10,6 +10,7 @@ class TokensInputHandler(InputHandler):
         self._operators              = self._path + "operators.txt"
         self._comments               = self._path + "comments.txt"
         self._literals               = self._path + "literals.txt"
+        self._numbers                = self._path + "numbers.txt"
         self._available_automatons   = available_automatons
         self._tokens_automatons_path = tokens_automatons_path
 
@@ -35,6 +36,9 @@ class TokensInputHandler(InputHandler):
         literals      = self.read_list(self._literals)
         tokens["lit"] = literals
 
+        numbers       = self.read_list(self._numbers)
+        tokens["num"] = numbers
+
         return tokens
 
     def get_tokens_automatons(self):
@@ -43,6 +47,8 @@ class TokensInputHandler(InputHandler):
         
         
         for index in range(len(automatons)):
+            if automatons[index] == "#":
+                print()
             path                       = self._tokens_automatons_path+automatons[index]+".json"
             str                        = self.read_file(path),
             token_json                 = json.loads(str[0])
