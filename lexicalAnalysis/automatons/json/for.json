@@ -1,7 +1,7 @@
 {
   "name" : "for",
   "states" : {
-    "q0" :
+    "<for>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "f" : "q1"
       }
     },
-    "q1" :
+    "<for>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "o" : "q2"
       }
     },
-    "q2" :
+    "<for>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "r" : "q3"
       }
     },
-    "q3" :
+    "<for>-q3" :
     {
       "initial" : false,
       "final"   : true,

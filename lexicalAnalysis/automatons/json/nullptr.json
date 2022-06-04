@@ -1,7 +1,7 @@
 {
   "name" : "nullptr",
   "states" : {
-    "q0" :
+    "<nullptr>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "n" : "q1"
       }
     },
-    "q1" :
+    "<nullptr>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "u" : "q2"
       }
     },
-    "q2" :
+    "<nullptr>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "l" : "q3"
       }
     },
-    "q3" :
+    "<nullptr>-q3" :
     {
       "initial" : false,
       "final"   : false,
@@ -37,7 +37,7 @@
         "l" : "q4"
       }
     },
-    "q4" :
+    "<nullptr>-q4" :
     {
       "initial" : false,
       "final"   : false,
@@ -46,7 +46,7 @@
         "p" : "q5"
       }
     },
-    "q5" :
+    "<nullptr>-q5" :
     {
       "initial" : false,
       "final"   : false,
@@ -55,7 +55,7 @@
         "t" : "q6"
       }
     },
-    "q6" :
+    "<nullptr>-q6" :
     {
       "initial" : false,
       "final"   : false,
@@ -64,7 +64,7 @@
         "r" : "q7"
       }
     },
-    "q7" :
+    "<nullptr>-q7" :
     {
       "initial" : false,
       "final"   : true,

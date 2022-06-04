@@ -2,7 +2,7 @@
   "name" : "hashtag",
   "states" :
   {
-    "q0" :
+    "<hashtag>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -11,7 +11,7 @@
         "#" : "q1"
       }
     },
-    "q1" :
+    "<hashtag>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -82,7 +82,7 @@
         "\\" : "q2"
       }
     },
-    "q2" :
+    "<hashtag>-q2" :
     {
       "initial" : false,
       "final"   : true,

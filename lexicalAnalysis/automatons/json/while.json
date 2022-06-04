@@ -1,7 +1,7 @@
 {
   "name" : "while",
   "states" : {
-    "q0" :
+    "<while>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "w" : "q1"
       }
     },
-    "q1" :
+    "<while>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "h" : "q2"
       }
     },
-    "q2" :
+    "<while>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "i" : "q3"
       }
     },
-    "q3" :
+    "<while>-q3" :
     {
       "initial" : false,
       "final"   : false,
@@ -37,7 +37,7 @@
         "l" : "q4"
       }
     },
-    "q4" :
+    "<while>-q4" :
     {
       "initial" : false,
       "final"   : false,
@@ -46,7 +46,7 @@
         "e" : "q5"
       }
     },
-    "q5" :
+    "<while>-q5" :
     {
       "initial" : false,
       "final"   : true,

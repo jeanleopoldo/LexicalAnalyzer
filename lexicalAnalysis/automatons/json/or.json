@@ -1,7 +1,7 @@
 {
   "name" : "or",
   "states" : {
-    "q0" :
+    "<or>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
           "o" : "q1"
       }
     },
-    "q1" :
+    "<or>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
           "r" : "q2"
       }
     },
-    "q2" :
+    "<or>-q2" :
     {
       "initial" : false,
       "final"   : true,

@@ -1,7 +1,7 @@
 {
   "name" : "and",
   "states" : {
-    "q0" :
+    "<and>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
           "a" : "q1"
       }
     },
-    "q1" :
+    "<and>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "n" : "q2"
       }
     },
-    "q2" :
+    "<and>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "d" : "q3"
       }
     },
-    "q3" :
+    "<and>-q3" :
     {
       "initial" : false,
       "final"   : true,

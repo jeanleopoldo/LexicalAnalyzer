@@ -1,7 +1,7 @@
 {
   "name" : "try",
-  "states" : {
-    "q0" :
+    "states" : {
+    "<try>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "t" : "q1"
       }
     },
-    "q1" :
+    "<try>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "r" : "q2"
       }
     },
-    "q2" :
+    "<try>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "y" : "q3"
       }
     },
-    "q3" :
+    "<try>-q3" :
     {
       "initial" : false,
       "final"   : true,

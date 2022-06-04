@@ -1,7 +1,7 @@
 {
   "name" : "return",
   "states" : {
-    "q0" :
+    "<return>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "r" : "q1"
       }
     },
-    "q1" :
+    "<return>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "e" : "q2"
       }
     },
-    "q2" :
+    "<return>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "t" : "q3"
       }
     },
-    "q3" :
+    "<return>-q3" :
     {
       "initial" : false,
       "final"   : false,
@@ -37,7 +37,7 @@
         "u" : "q4"
       }
     },
-    "q4" :
+    "<return>-q4" :
     {
       "initial" : false,
       "final"   : false,
@@ -46,7 +46,7 @@
         "r" : "q5"
       }
     },
-    "q5" :
+    "<return>-q5" :
     {
       "initial" : false,
       "final"   : false,
@@ -55,7 +55,7 @@
         "n" : "q6"
       }
     },
-    "q6" :
+    "<return>-q6" :
     {
       "initial" : false,
       "final"   : true,

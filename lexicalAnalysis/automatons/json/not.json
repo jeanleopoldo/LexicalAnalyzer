@@ -1,7 +1,7 @@
 {
   "name" : "not",
   "states" : {
-    "q0" :
+    "<not>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
           "n" : "q1"
       }
     },
-    "q1" :
+    "<not>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "o" : "q2"
       }
     },
-    "q2" :
+    "<not>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "t" : "q3"
       }
     },
-    "q3" :
+    "<not>-q3" :
     {
       "initial" : false,
       "final"   : true,

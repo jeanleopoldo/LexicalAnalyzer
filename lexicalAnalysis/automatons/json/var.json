@@ -1,7 +1,7 @@
 {
   "name" : "var",
   "states" : {
-    "q0" :
+    "<var>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "v" : "q1"
       }
     },
-    "q1" :
+    "<var>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "a" : "q2"
       }
     },
-    "q2" :
+    "<var>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "r" : "q3"
       }
     },
-    "q3" :
+    "<var>-q3" :
     {
       "initial" : false,
       "final"   : true,

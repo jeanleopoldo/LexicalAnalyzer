@@ -1,7 +1,7 @@
 {
   "name" : "==",
   "states" : {
-    "q0" :
+    "<==>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
           "==" : "q1"
       }
     },
-    "q1" :
+    "<==>-q1" :
     {
       "initial" : false,
       "final"   : true,

@@ -1,7 +1,7 @@
 {
   "name" : "if",
   "states" : {
-    "q0" :
+    "<if>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "i" : "q1"
       }
     },
-    "q1" :
+    "<if>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "f" : "q2"
       }
     },
-    "q2" :
+    "<if>-q2" :
     {
       "initial" : false,
       "final"   : true,

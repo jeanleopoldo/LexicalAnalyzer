@@ -1,7 +1,7 @@
 {
   "name" : "xor",
   "states" : {
-    "q0" :
+    "<xor>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
           "x" : "q1"
       }
     },
-    "q1" :
+    "<xor>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "o" : "q2"
       }
     },
-    "q2" :
+    "<xor>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "r" : "q3"
       }
     },
-    "q3" :
+    "<xor>-q3" :
     {
       "initial" : false,
       "final"   : true,

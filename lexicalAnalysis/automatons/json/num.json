@@ -1,7 +1,7 @@
 {
     "name" : "num",
     "states" : {
-      "q0" :
+      "<num>-q0" :
       {
         "initial" : true,
         "final"   : false,
@@ -19,7 +19,7 @@
           "9" : "q1"
         }
       },
-      "q1" :
+      "<num>-q1" :
       {
         "initial" : false,
         "final"   : true,
@@ -38,7 +38,7 @@
           "." : "q2"
         }
       },
-      "q2" :
+      "<num>-q2" :
       {
         "initial" : false,
         "final"   : false,

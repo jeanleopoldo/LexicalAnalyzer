@@ -1,7 +1,7 @@
 {
   "name" : "catch",
   "states" : {
-    "q0" :
+    "<catch>-q0" :
     {
       "initial" : true,
       "final"   : false,
@@ -10,7 +10,7 @@
         "c" : "q1"
       }
     },
-    "q1" :
+    "<catch>-q1" :
     {
       "initial" : false,
       "final"   : false,
@@ -19,7 +19,7 @@
         "a" : "q2"
       }
     },
-    "q2" :
+    "<catch>-q2" :
     {
       "initial" : false,
       "final"   : false,
@@ -28,7 +28,7 @@
         "t" : "q3"
       }
     },
-    "q3" :
+    "<catch>-q3" :
     {
       "initial" : false,
       "final"   : false,
@@ -37,7 +37,7 @@
         "c" : "q4"
       }
     },
-    "q4" :
+    "<catch>-q4" :
     {
       "initial" : false,
       "final"   : false,
@@ -46,7 +46,7 @@
         "h" : "q5"
       }
     },
-    "q5" :
+    "<catch>-q5" :
     {
       "initial" : false,
       "final"   : true,
