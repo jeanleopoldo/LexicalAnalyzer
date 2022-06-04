@@ -7,9 +7,11 @@ This is an implementation of a lexical analyzer in Python
 ## How to run
 - one shall insert a regular grammar in ./expr/file.txt
 - one shall run ./scripts/run.sh
-- the **token table** and the **generated automaton** are in `./output/token_table.json` and `./automatons.json` respectivelly
+    - the script is meant for linux
+    - alternatively, one shall run `python3 main.py` once in project's root folder
+- the **token table** and the **generated automaton** are in `./output/token_table.json` and `./automatons.json` respectively
 
-For a better view, you may put the desired file into a json formatter, such as [JSON formatter](https://jsonformatter.org/).
+For a better view, one may put the desired file into a json formatter, such as [JSON formatter](https://jsonformatter.org/).
 ## Documentation
 [tokens](https://docs.google.com/document/d/1lHORtHnWSRQFe5K1vXkKPAZxZMa5mhE2Ebdm48LD0Ls/edit?usp=sharing)
 
