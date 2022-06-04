@@ -51,8 +51,8 @@ class LexicalAnalyzer:
 
             if current_state.is_final() and not current_state.has_production_with_char(char):
                 token_index += 1
-                next_token_name = self._ordered_tokens[token_index]
-                next_token      = self.retrieve_token(next_token_name)
+                next_token_structure = self._ordered_tokens[token_index]
+                next_token      = self.retrieve_token(next_token_structure)
                 next_state      = next_token.initial_state()
 
                 # the two calls below are what is making the automata union
@@ -67,36 +67,36 @@ class LexicalAnalyzer:
         self._generated_automaton.append(current_state)
             
 
-    def retrieve_token(self, name):
-        if name[0] == ID or name[0] == CMM:
-            token_name = name[0]
-        elif name[0] == LIT:
-            if name[1][0] == '"' and name[1][len(name[1])-1] == '"':
+    def retrieve_token(self, next_token_structure):
+        if next_token_structure[0] == ID or next_token_structure[0] == CMM:
+            token_name = next_token_structure[0]
+        elif next_token_structure[0] == LIT:
+            if next_token_structure[1][0] == '"' and next_token_structure[1][len(next_token_structure[1])-1] == '"':
                 token_name = STRING
-            elif name[1] == TRUE:
+            elif next_token_structure[1] == TRUE:
                 token_name = TRUE
-            elif name[1] == FALSE:
+            elif next_token_structure[1] == FALSE:
                 token_name = FALSE
-            elif name[1] == INT:
+            elif next_token_structure[1] == INT:
                 token_name = INT
-            elif name[1] == FLOAT:
+            elif next_token_structure[1] == FLOAT:
                 token_name = FLOAT
             else:
                 token_name = LIT
-        elif name[0] == NUM:
+        elif next_token_structure[0] == NUM:
             try:
-                if "." in name[1]:
-                    float(name[1])
+                if "." in next_token_structure[1]:
+                    float(next_token_structure[1])
                 else:
-                    int(name[1])
+                    int(next_token_structure[1])
                 token_name = NUM
             except:
-                if name[0][0] == '"':
+                if next_token_structure[0][0] == '"':
                     token_name = STRING
                 else:
-                    token_name = name[1]
+                    token_name = next_token_structure[1]
         else:
-            token_name = name[1]
+            token_name = next_token_structure[1]
         token = self._tokens_automatons[token_name]
         return copy.deepcopy(token)
 
