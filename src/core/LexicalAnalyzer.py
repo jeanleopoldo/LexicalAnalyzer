@@ -68,6 +68,10 @@ class LexicalAnalyzer:
         elif name[0] == LIT:
             if name[1][0] == '"' and name[1][len(name[1])-1] == '"':
                 token_name = STRING
+            elif name[1][0] == "t":
+                token_name = TRUE
+            elif name[1][0] == "f":
+                token_name = FALSE
             else:
                 token_name = LIT
         elif name[0] == NUM:
@@ -89,33 +93,18 @@ class LexicalAnalyzer:
 
     def find_tokens(self):
         word = ""
-        cmm = False
         for index in range(len(self._input)):
-            if index == 10:
-                print()
             char = self._input[index]
-            ## dealing with comments
-            if cmm:
-                if char == '\\':
-                    cmm = False
-                    self._ordered_tokens.append([CMM, word])
-                    word = ""
-                else:
-                    word += char
-                continue
-            
-            if char in self._tokens[CMM]:
-                cmm = True
-                word += char
-                continue
 
             if char in self._tokens[DEL] or char in self._tokens[OP] or char == " ":
                 token = self.find_token(word)
                 if token is not None:
                     self._ordered_tokens.append([token,word])
+                    self._token_table[word] = token
                 token = self.find_token(char)
                 if token is not None:
                     self._ordered_tokens.append([token,char])
+                    self._token_table[char] = token
                 word = ""
             else:
                 word +=char
