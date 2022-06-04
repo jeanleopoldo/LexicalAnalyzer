@@ -18,3 +18,5 @@ For a better view, you may put the desired file into a json formatter, such as [
 This project adheres [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Further informations
+
+- lines that start with `#` are not to be considered as they are, by the language definition, comments
