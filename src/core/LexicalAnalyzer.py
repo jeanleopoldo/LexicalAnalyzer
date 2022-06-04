@@ -39,7 +39,6 @@ class LexicalAnalyzer:
         current_token = self.retrieve_token(token_name)
         current_state = current_token.initial_state()
 
-
         formatted_input = self._input
 
         formatted_input = formatted_input.replace(" ", "")
@@ -55,6 +54,8 @@ class LexicalAnalyzer:
                 next_token_name = self._ordered_tokens[token_index]
                 next_token      = self.retrieve_token(next_token_name)
                 next_state      = next_token.initial_state()
+
+                # the two calls below are what is making the automata union
                 current_state.update_final_state(char, next_state.name())
                 next_state.update_initial_state()
                 current_token = next_token
@@ -105,8 +106,10 @@ class LexicalAnalyzer:
         word = ""
         for index in range(len(self._input)):
             if self._found_agraggate:
+                # shit workaround to deal with 2 char operators, such as ==, <=, etc.
                 self._found_agraggate = False
                 continue
+
             char = self._input[index]
             if index < len(self._input)-1:
                 next_char = self._input[index+1]
@@ -132,10 +135,12 @@ class LexicalAnalyzer:
         if word[0] == '"' and word[len(word)-1] == '"':
             return [LIT, word]
 
-        # dealing with operators, delimites and keywords
+        # dealing with operators, delimiters and keywords
         for token in self._tokens:
             array = self._tokens[token]
             if word in array:
+
+                # the four rules below are for cases with op with 2 chars, such as ==, <=, etc.
                 if token == DEL and next_char == "=":
                     word += "="
                     token = OP
@@ -151,11 +156,11 @@ class LexicalAnalyzer:
                 self._found_tokens[token].append(word)
                 return [token, word]
         
-        #dealing with identifiers
-
         try:
+            #dealing with num
             int(word[0])
             return [NUM, word]
         except:
+            #dealing with identifiers
             self._found_tokens[ID].append(word)
             return [ID, word]
