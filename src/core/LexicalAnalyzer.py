@@ -59,7 +59,7 @@ class LexicalAnalyzer:
             next_state_name = current_state.next_state_by_char(char)
             current_state   = current_token.get_state(next_state_name)
         
-        current_state.set_this_as_final_state()
+        self._generated_automaton.append(current_state)
             
 
     def retrieve_token(self, name):
