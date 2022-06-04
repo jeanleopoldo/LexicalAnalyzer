@@ -9,7 +9,8 @@ NUM    = "num"
 STRING = "string"
 TRUE   = "true"
 FALSE  = "false"
-
+INT    = "int"
+FLOAT  = "float"
 class LexicalAnalyzer:
     def __init__(self, input, tokens, tokens_automatons):
         self._input             = input
@@ -23,9 +24,12 @@ class LexicalAnalyzer:
 
 
     def tokenize(self):
+        # try:
         self.find_tokens()
         self.generate_automaton()
+        # except KeyError as e:
 
+        #     raise RuntimeError("An error ocurred whilst analizing")
         return [self._generated_automaton, self._token_table]
     
     def generate_automaton(self):
@@ -68,10 +72,14 @@ class LexicalAnalyzer:
         elif name[0] == LIT:
             if name[1][0] == '"' and name[1][len(name[1])-1] == '"':
                 token_name = STRING
-            elif name[1][0] == "t":
+            elif name[1] == TRUE:
                 token_name = TRUE
-            elif name[1][0] == "f":
+            elif name[1] == FALSE:
                 token_name = FALSE
+            elif name[1] == INT:
+                token_name = INT
+            elif name[1] == FLOAT:
+                token_name = FLOAT
             else:
                 token_name = LIT
         elif name[0] == NUM:
@@ -92,43 +100,62 @@ class LexicalAnalyzer:
         return copy.deepcopy(token)
 
     def find_tokens(self):
+
+        self._found_agraggate = False
         word = ""
         for index in range(len(self._input)):
+            if self._found_agraggate:
+                self._found_agraggate = False
+                continue
             char = self._input[index]
+            if index < len(self._input)-1:
+                next_char = self._input[index+1]
 
             if char in self._tokens[DEL] or char in self._tokens[OP] or char == " ":
                 token = self.find_token(word)
                 if token is not None:
-                    self._ordered_tokens.append([token,word])
+                    self._ordered_tokens.append([token[0], word])
                     self._token_table[word] = token
-                token = self.find_token(char)
+                token = self.find_token(char, next_char)
                 if token is not None:
-                    self._ordered_tokens.append([token,char])
-                    self._token_table[char] = token
+                    self._ordered_tokens.append([token[0],token[1]])
+                    self._token_table[token[1]] = token
                 word = ""
             else:
                 word +=char
             
-    def find_token(self, word):
+    def find_token(self, word, next_char=None):
         if word == " " or word =="":
             return
         
         #dealing with strings
         if word[0] == '"' and word[len(word)-1] == '"':
-            return LIT
+            return [LIT, word]
 
         # dealing with operators, delimites and keywords
         for token in self._tokens:
             array = self._tokens[token]
             if word in array:
+                if token == DEL and next_char == "=":
+                    word += "="
+                    token = OP
+                elif token == OP and next_char == "-":
+                    self._found_agraggate = True
+                    word += "-"
+                elif token == OP and next_char == "+":
+                    self._found_agraggate = True
+                    word += "+"
+                elif token == OP and (word == "<" or word == ">" or word == "!") and next_char == "=":
+                    self._found_agraggate = True
+                    word += "="
                 self._found_tokens[token].append(word)
-                return token
+                return [token, word]
         
         #dealing with identifiers
 
         try:
             int(word[0])
-            return NUM
+            return [NUM, word]
         except:
             self._found_tokens[ID].append(word)
-            return ID
+            return [ID, word]
