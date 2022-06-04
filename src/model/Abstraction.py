@@ -2,7 +2,10 @@ from .State import State
 
 class Abstraction:
     def __init__(self, json):
-        self._name = json["name"]
+        if json["name"] == "hashtag":
+            self._name = "#"
+        else:
+            json["name"]
         self._json          = json
         self._generated_by  = None
         self._states        = {}
