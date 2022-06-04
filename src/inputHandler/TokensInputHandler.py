@@ -45,10 +45,7 @@ class TokensInputHandler(InputHandler):
         tokens     = {}
         automatons = self.read_list(self._available_automatons)
         
-        
         for index in range(len(automatons)):
-            if automatons[index] == "#":
-                print()
             path                       = self._tokens_automatons_path+automatons[index]+".json"
             str                        = self.read_file(path),
             token_json                 = json.loads(str[0])

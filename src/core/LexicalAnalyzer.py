@@ -1,26 +1,32 @@
 import copy
 
-DEL = "del"
-OP  = "op"
-LIT = "lit"
-ID  = "id"
-CMM = "cmm"
-NUM = "num"
+DEL    = "del"
+OP     = "op"
+LIT    = "lit"
+ID     = "id"
+CMM    = "cmm"
+NUM    = "num"
 STRING = "string"
-
+TRUE   = "true"
+FALSE  = "false"
 
 class LexicalAnalyzer:
     def __init__(self, input, tokens, tokens_automatons):
-        self._input          = input
-        self._tokens         = tokens
-        self._ordered_tokens = list()
+        self._input             = input
+        self._tokens            = tokens
+        self._ordered_tokens    = list()
+        self._token_table       = {}
         self._tokens_automatons = tokens_automatons
-        self._found_tokens  =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[], "num":[]}
+        self._found_tokens      =  {"kw":[], "id":[], "del":[], "op":[], "cmm":[], "lit":[], "num":[]}
+
+        self._generated_automaton = list()
 
 
     def tokenize(self):
         self.find_tokens()
         self.generate_automaton()
+
+        return [self._generated_automaton, self._token_table]
     
     def generate_automaton(self):
 
@@ -28,7 +34,6 @@ class LexicalAnalyzer:
         token_name    = self._ordered_tokens[token_index]
         current_token = self.retrieve_token(token_name)
         current_state = current_token.initial_state()
-        states        = list()
 
 
         formatted_input = self._input
@@ -39,7 +44,7 @@ class LexicalAnalyzer:
             char          = formatted_input[index]
             if char == '"':
                 char = "'"
-            states.append(current_state)
+            self._generated_automaton.append(current_state)
 
             if current_state.is_final() and not current_state.has_production_with_char(char):
                 token_index += 1
@@ -53,6 +58,8 @@ class LexicalAnalyzer:
             
             next_state_name = current_state.next_state_by_char(char)
             current_state   = current_token.get_state(next_state_name)
+        
+        current_state.set_this_as_final_state()
             
 
     def retrieve_token(self, name):

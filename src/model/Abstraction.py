@@ -1,3 +1,4 @@
+import json
 from .State import State
 
 class Abstraction:
@@ -36,5 +37,8 @@ class Abstraction:
     
     def initial_state(self):
         return self._states["q0"]
+    
+    def toJSON(self):
+        return json.dumps(self)
     
     

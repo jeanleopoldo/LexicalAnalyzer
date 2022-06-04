@@ -49,3 +49,15 @@ class State:
     def update_initial_state(self):
         self._initial = False
 
+    def set_this_as_final_state(self):
+        self._final = True
+
+    def toJSON(self):
+        JSONObject = {
+            "initial"     : self._initial,
+            "final"       : self._final,
+            "productions" : self._productions
+        }
+
+        return JSONObject
+
