@@ -6,12 +6,11 @@ class Abstraction:
         if json["name"] == "hashtag":
             self._name = "#"
         else:
-            json["name"]
+            self._name = json["name"]
         self._json          = json
         self._generated_by  = None
         self._states        = {}
         self.create_states()
-        self._current_state = self._states["q0"]
     
     def create_states(self):
         
@@ -19,6 +18,8 @@ class Abstraction:
             json               = self._json["states"][name]
             state              = State(name, json)
             self._states[name] = state
+            if "q0" in name:
+                self._current_state = state
     
     def name(self):
         return self._name
@@ -33,11 +34,16 @@ class Abstraction:
         return self._states
     
     def get_state(self, state):
-        return self._states[state]
+        name = self.format_state_name(state)
+        return self._states[name]
     
     def initial_state(self):
-        return self._states["q0"]
-    
+        name = self.format_state_name("q0")
+        return self._states[name]
+
+    def format_state_name(self, state_name):
+        return "<"+self._name+">-"+state_name
+
     def toJSON(self):
         return json.dumps(self)
     
