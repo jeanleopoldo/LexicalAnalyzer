@@ -9,12 +9,13 @@ from src.outputHandler.OutputHandler      import OutputHandler
 
 _dirname = os.path.dirname(__file__)+"/"
 
-AVAILABLE_LEXEMES_AUTOMATA = _dirname+"syntaticAnalysis/automatons/lexemes.txt"
-LEXEMES_AUTOMATA_PATH      = _dirname+"syntaticAnalysis/automatons/json/"
+RESOURCES                  = "resources/"
+AVAILABLE_LEXEMES_AUTOMATA = _dirname+RESOURCES+"syntaticAnalysis/automatons/lexemes.txt"
+LEXEMES_AUTOMATA_PATH      = _dirname+RESOURCES+"syntaticAnalysis/automatons/json/"
 INPUT_PATH                 = _dirname+"expr/input.txt"
-TOKEN_PATH                 = _dirname+"lexicalAnalysis/tokens/"
-AVAILABLE_TOKENS_AUTOMATA  = _dirname+"lexicalAnalysis/automatons/tokens.txt"
-TOKENS_AUTOMATA_PATH       = _dirname+"lexicalAnalysis/automatons/json/"
+TOKEN_PATH                 = _dirname+RESOURCES+"lexicalAnalysis/tokens/"
+AVAILABLE_TOKENS_AUTOMATA  = _dirname+RESOURCES+"lexicalAnalysis/automatons/tokens.txt"
+TOKENS_AUTOMATA_PATH       = _dirname+RESOURCES+"lexicalAnalysis/automatons/json/"
 
 OUTPUT_PATH                = _dirname+"output/"
 
